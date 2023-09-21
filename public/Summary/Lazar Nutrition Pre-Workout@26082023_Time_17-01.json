@@ -1,0 +1,74 @@
+{
+  "selectedItem": "Lazar Nutrition Pre-Workout",
+  "itemData": [
+    {
+      "Weight": 100
+    },
+    {
+      "Beta Alanine": 20,
+      "Vit C": 0.15,
+      "Taurine": 11,
+      "Calcium Silicate": 0.03,
+      "Silicon Dioxide": 0.04,
+      "Sucralose": 0.1,
+      "Ace K": 10.05,
+      "Color": 0.001
+    },
+    {
+      "19oz pet black": null,
+      "89mm pole cap": null,
+      "7.5cc yellow": null,
+      "1silica": null,
+      "Carton mark19oz12pk": null
+    }
+  ],
+  "totalServings": 41.371,
+  "boxes": "1",
+  "batch1": "3",
+  "batch2": "4",
+  "batch3": "6",
+  "boxElements": [
+    "0.05",
+    "0.00",
+    "0.03",
+    "0.00",
+    "0.00",
+    "0.00",
+    "0.02",
+    "0.00"
+  ],
+  "batch1Elements": [
+    "1.45",
+    "0.01",
+    "0.80",
+    "0.00",
+    "0.00",
+    "0.01",
+    "0.73",
+    "0.00"
+  ],
+  "batch2Elements": [
+    "1.93",
+    "0.01",
+    "1.06",
+    "0.00",
+    "0.00",
+    "0.01",
+    "0.97",
+    "0.00"
+  ],
+  "batch3Elements": [
+    "2.90",
+    "0.02",
+    "1.60",
+    "0.00",
+    "0.01",
+    "0.01",
+    "1.46",
+    "0.00"
+  ],
+  "totalBoxElements": "0.10",
+  "totalBatch1Elements": "3.00",
+  "totalBatch2Elements": "4.00",
+  "totalBatch3Elements": "6.00"
+}

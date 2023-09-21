@@ -1,0 +1,20 @@
+[
+  { "Weight": 300 },
+  {
+    "Beta Alanine": 20,
+    "Vit C": 0.15,
+    "Taurine": 11,
+    "Calcium Silicate": 0.03,
+    "Silicon Dioxide": 0.04,
+    "Sucralose": 0.1,
+    "Ace K": 10.05,
+    "Color": 0.001
+  },
+  {
+    "19oz pet black": null,
+    "89mm pole cap": null,
+    "7.5cc yellow": null,
+    "1silica": null,
+    "Carton mark19oz12pk": null
+  }
+]

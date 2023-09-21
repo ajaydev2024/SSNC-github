@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+
+#batch , #inventoryPage{
+  overflow-x: hidden;
+  color: black !important;
+  background: white !important;
+  padding-bottom: 1rem;
+}
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding-right: 4px;
+ 
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+h1 {
+  color: red;
+  background-color: black;
+}
+
+ul {
+  list-style-type:  none;
+  padding: 0;
+  border: 1px solid #ddd;
+}
+
+ul li {
+  padding: 8px 16px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+ul li:last-child {
+  border-bottom: none
+}
+/* Add this CSS to your existing CSS file or create a new CSS file and import it */
+
+/* For mobile devices and small screens */
+@media screen and (max-width: 767px) {
+  /* Adjust the font size for better readability on small screens */
+  th,
+  td {
+    font-size: 12px;
+  }
+}
+
+/* For tablets and medium-sized screens */
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  /* Adjust the font size for better readability on medium-sized screens */
+  th,
+  td {
+    font-size: 15px;
+  }
+}
+
+/* For larger screens */
+@media screen and (min-width: 992px) {
+  /* Set the table width to 100% to occupy the entire container */
+  table {
+    width: 100%;
+  }
+
+  /* Adjust the font size for better readability on larger screens */
+  th,
+  td {
+    font-size: 18px;
+  }
+}
+
+
+
+

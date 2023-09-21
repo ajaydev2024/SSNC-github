@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Collapse from 'react-collapse';
-import Navbar from '@/components/Navbar';
+import Navbar from '../components/Navbar';
 import { readdir, readFile, stat } from 'fs/promises';
 import { join, extname } from 'path';
 

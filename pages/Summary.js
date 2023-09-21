@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Collapse from 'react-collapse';
-import Navbar from '@/components/Navbar';
+import Navbar from '../components/Navbar';
 import axios from 'axios'; // Import Axios for making API requests
 
 const Summary = () => {

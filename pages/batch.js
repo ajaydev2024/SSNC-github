@@ -117,10 +117,9 @@
     //const sheets = itemData.map(item => ({    sheetName: item.title,    data: item.materials.filter(material => material.value !== null), }));
   
     const handleSaveToJson = async () => {
-      console.log("handleSaveToJson called")
-      let result = await fetch('api/mongo/setMongoBatch', {
-        method:"POST",
-        body: JSON.stringify({ selectedItem,
+      try {
+        const dataToSave = {
+          selectedItem,
           itemData,
           totalServings,
           boxes,
@@ -134,15 +133,31 @@
           totalBoxElements,
           totalBatch1Elements,
           totalBatch2Elements,
-          totalBatch3Elements,})
-      });
-    result = await result.json();
-    if(result.success){
-      alert("New Product Added")
-    }
+          totalBatch3Elements,
+        };
+        const apiEndpoint = `${window.location.origin}/api/mongo/setMongoBatch`;
 
+        const saveResponse = await fetch(apiEndpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(dataToSave),
+        });
+  
+        if (saveResponse.ok) {
+          console.log('Data saved successfully');
+          // Handle success here or redirect to another page
+        } else {
+          console.error('Error saving data here');
+          // Handle error here, show an error message to the user, or redirect to an error page
+        }
+      } catch (error) {
+        console.error('Error saving data contact Ajay:', error);
+        // Handle other errors that may occur during data saving
+      }
     };
-
+     
     const generatePdfWithWatermark = () => {
       // Create a new jsPDF instance
       const pdf = new jsPDF('l', 'px', 'a4');

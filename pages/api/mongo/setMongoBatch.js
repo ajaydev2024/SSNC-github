@@ -28,8 +28,7 @@ export default async function handler(req, res) {
     try {
       await mongoose.connect('mongodb+srv://ssnc-Inventory:jIorzSeWzo3CETeA@cluster0.dd3cywd.mongodb.net/?retryWrites=true&w=majority');
       const data = await Product.find();
-
-      // Close the MongoDB connection after the operation is complete
+     
       mongoose.connection.close();
 
       console.log('Data fetched successfully');

@@ -2,29 +2,7 @@ import mongoose from 'mongoose';
 
 const productSchema = new mongoose.Schema({
   selectedItem: String,
-  itemData: {
-    Weight: Number,
-    "Zeta Alanine": Number,
-    "Vit E": Number,
-    Taurine: Number,
-    Caffeine: Number,
-    "Vit A": Number,
-    "Vit C": Number,
-    "Carnitine Tartrate": Number,
-    "Citric Acid": Number,
-    Flavour: Number,
-    Malto: Number,
-    "Calcium Silicate": Number,
-    "Silicon Dioxide": Number,
-    Sucralose: Number,
-    "Ace K": Number,
-    Color: Number,
-    "19 oz Pet Black Bottle": Number,
-    "01 Silica (10gm)": Number,
-    "Scoop 7.5cc": Number,
-    "89mm Pole Cap": Number,
-    "Carton 19oz - 12pk": Number,
-  },
+  itemData:[Object],
   totalServings: Number,
   boxes: Number,
   batch1: Number,
@@ -37,9 +15,17 @@ const productSchema = new mongoose.Schema({
   totalBoxElements: Number,
   totalBatch1Elements: Number,
   totalBatch2Elements: Number,
-  totalBatch3Elements: Number,
+  totalBatch3Elements: Number
 });
 
-const Product = mongoose.model('Product', productSchema);
+let Product;
+
+try {
+  // Try to retrieve the existing model if it exists
+  Product = mongoose.model("inventoryItems");
+} catch (error) {
+  // If the model doesn't exist, create it
+  Product = mongoose.model("inventoryItems", productSchema);
+}
 
 export { Product };

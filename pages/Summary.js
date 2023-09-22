@@ -7,18 +7,24 @@ const Summary = () => {
   const [summaryItems, setSummaryItems] = useState([]);
 
   useEffect(() => {
-    // Fetch summary data from the API route
-    axios.get('/api/getSummaryData')
-      .then(response => {
-        const initialSummaryItems = response.data.map(item => ({
-          ...item,
-          isOpen: false // Add an isOpen property to each item
-        }));
-        setSummaryItems(initialSummaryItems);
-      })
-      .catch(error => {
-        console.error('Error fetching summary data:', error);
-      });
+    const fetchData = async () => {
+      try {
+        const apiEndpoint = `${window.location.origin}/api/mongo/setMongoBatch`;
+        const saveResponse = await fetch(apiEndpoint, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const responseData = await saveResponse.json();
+        console.log("batch :",responseData)
+        setSummaryItems(responseData); // Assuming responseData is an array of objects
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
   }, []);
 
   const toggleAccordion = (index) => {
@@ -37,16 +43,16 @@ const Summary = () => {
       <Navbar />
       <h1 className="text-center text-2xl">Summary Page of Every Item</h1>
       <div className="accordion-container">
-      {summaryItems.map((jsonItem, index) => (
-        <div className="list-decimal">
-          <button
+        {summaryItems.map((jsonItem, index) => (
+          <div className="list-decimal">
+            <button
               onClick={() => toggleAccordion(index)}
               className="accordion cursor-pointer rounded-lg font-bold"
-          >
-            {jsonItem.fileName}
-          </button>
-          <Collapse isOpened={jsonItem.isOpen}>
-          <div className="panel">
+            >
+              {jsonItem.fileName}
+            </button>
+            <Collapse isOpened={jsonItem.isOpen}>
+              <div className="panel">
                 <table className="table">
                   <thead>
                     <tr>
@@ -99,9 +105,9 @@ const Summary = () => {
 
                   </tbody>
                 </table>
-            </div>
-          </Collapse>
-        </div>
+              </div>
+            </Collapse>
+          </div>
         ))}
       </div>
     </div>

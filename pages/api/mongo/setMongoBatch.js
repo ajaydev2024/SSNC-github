@@ -5,16 +5,13 @@ export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
       const payload = req.body; // Assuming the JSON data is directly in the request body
-
       await mongoose.connect('mongodb+srv://ssnc-Inventory:jIorzSeWzo3CETeA@cluster0.dd3cywd.mongodb.net/?retryWrites=true&w=majority');
 
       let product = new Product(payload);
       const result = await product.save();
-
+     console.log("POST request : ", result)
       // Close the MongoDB connection after the operation is complete
       mongoose.connection.close();
-
-      console.log('Data saved successfully:', result);
       return res.status(200).json({ result, success: true });
     } catch (error) {
       console.error('Error saving data to MongoDB:', error);

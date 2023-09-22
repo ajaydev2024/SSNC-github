@@ -136,9 +136,9 @@ const Batch = ({ itemData }) => {
         totalBatch2Elements,
         totalBatch3Elements,
       };
-      const apiEndpoint = `${window.location.origin}/api/mongo/setMongoBatch`;
+    //  const apiEndpoint = `${window.location.origin}/api/mongo/setMongoBatch`;
 
-      const saveResponse = await fetch(apiEndpoint, {
+      const saveResponse = await fetch('/api/mongo/setMongoBatch', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -147,8 +147,20 @@ const Batch = ({ itemData }) => {
       });
 
       if (saveResponse.ok) {
-        console.log('Data saved successfully');
-        // Handle success here or redirect to another page
+        try {
+          const deductResponse = await fetch('/api/mongo/deductMongo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+        })          
+         console.log("deductResponse:",deductResponse);
+        } catch (error) {
+          console.error('Error saving data deductResponse:', error);
+        }
+       
+        console.log('Data saved successfully & no one is called');
+
       } else {
         console.error('Error saving data here');
         // Handle error here, show an error message to the user, or redirect to an error page
@@ -159,7 +171,7 @@ const Batch = ({ itemData }) => {
     }
   };
 
-  const generatePdfWithWatermark = () => {
+   const generatePdfWithWatermark = () => {
     // Create a new jsPDF instance
     const pdf = new jsPDF('l', 'px', 'a4');
 
@@ -343,9 +355,7 @@ const Batch = ({ itemData }) => {
 export async function getServerSideProps(context) {
   const { selectedItem } = context.query;
 
-  // Decode the selectedItem values
   const decodedSelectedItem = decodeURIComponent(selectedItem); // Remove .json
-  console.log("decodedSelectedItem", decodedSelectedItem)
   try {
     const itemData = await DataFetcher(decodedSelectedItem);
 
